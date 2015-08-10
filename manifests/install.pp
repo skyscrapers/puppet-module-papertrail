@@ -1,6 +1,13 @@
 class papertrail::install {
 
-  package { ['rsyslog', 'rsyslog-gnutls', 'wget']:
+
+  if !defined(Package['wget']) {
+    package { ['wget']:
+      ensure  => 'installed'
+    }
+  }
+  
+  package { ['rsyslog', 'rsyslog-gnutls']:
     ensure  => 'installed'
   }
 
