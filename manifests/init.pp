@@ -14,7 +14,7 @@ class papertrail(
   $action_queue_timeout_enqueue = 10,
   $action_queue_discard_severity = 0,
   $cert_url = 'https://papertrailapp.com/tools/papertrail-bundle.pem',
-  $cert = '/etc/syslog.papertrail.pem',
+  $cert = '/etc/papertrail-bundle.pem',
   $optional_files = []
 ) {
   include papertrail::install
