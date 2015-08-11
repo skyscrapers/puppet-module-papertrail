@@ -5,10 +5,11 @@ template(name="PAPERTRAIL_ForwardTemplate" type="string" string="<%%PRI%>%TIMEST
 $ActionForwardDefaultTemplate PAPERTRAIL_ForwardTemplate
 <%- end -%>
 
-$DefaultNetstreamDriverCAFile /etc/syslog.papertrail.crt    # trust these CAs
+$DefaultNetstreamDriverCAFile /etc/papertrail-bundle.pem    # trust these CAs
 $DefaultNetstreamDriver gtls                                # use gtls netstream driver
 $ActionSendStreamDriverMode 1                               # require TLS
 $ActionSendStreamDriverAuthMode x509/name                   # authenticate by hostname
+$ActionSendStreamDriverPermittedPeer *.papertrailapp.com
 <%- if @action_resume_interval -%>
 $ActionResumeInterval <%= @action_resume_interval %>
 <%- end -%>
