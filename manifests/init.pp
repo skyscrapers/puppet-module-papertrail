@@ -15,6 +15,7 @@ class papertrail(
   $action_queue_discard_severity = 0,
   $cert_url = 'https://papertrailapp.com/tools/syslog.papertrail.crt',
   $cert = '/etc/syslog.papertrail.crt',
+  $custom_template = false,
   $optional_files = []
 ) {
   include papertrail::install

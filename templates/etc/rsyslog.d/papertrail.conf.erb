@@ -1,5 +1,10 @@
 # file is managed by puppet
 
+<%- if @custom_template -%>
+template(name="PAPERTRAIL_ForwardTemplate" type="string" string="<%%PRI%>%TIMESTAMP:::date-rfc3339% <%= @hostname %> %syslogtag:1:32%%msg:::sp-if-no-1st-sp%%msg%")
+$ActionForwardDefaultTemplate PAPERTRAIL_ForwardTemplate
+<%- end -%>
+
 $DefaultNetstreamDriverCAFile /etc/syslog.papertrail.crt    # trust these CAs
 $DefaultNetstreamDriver gtls                                # use gtls netstream driver
 $ActionSendStreamDriverMode 1                               # require TLS
