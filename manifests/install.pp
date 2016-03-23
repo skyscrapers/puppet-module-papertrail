@@ -6,9 +6,17 @@ class papertrail::install {
       ensure  => 'installed'
     }
   }
-  
-  package { ['rsyslog', 'rsyslog-gnutls']:
-    ensure  => 'installed'
+
+  if !defined(Package['rsyslog']) {
+    package { ['rsyslog']:
+      ensure  => 'installed'
+    }
+  }
+
+  if !defined(Package['rsyslog-gnutls']) {
+    package { ['rsyslog-gnutls']:
+      ensure  => 'installed'
+    }
   }
 
   file { '/etc/rsyslog.d/papertrail.conf':
