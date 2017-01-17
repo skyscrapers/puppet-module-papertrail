@@ -1,4 +1,4 @@
-class papertrail::install {
+class papertrail::install inherits papertrail {
 
 
   if !defined(Package['wget']) {
