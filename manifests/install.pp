@@ -19,9 +19,9 @@ class papertrail::install inherits papertrail {
     }
   }
 
-  $config_file = $config_file_prio ? {
+  $config_file = $papertrail::config_file_prio ? {
     undef   => '/etc/rsyslog.d/papertrail.conf',
-    default => "/etc/rsyslog.d/${config_file_prio}-papertrail.conf",
+    default => "/etc/rsyslog.d/${papertrail::config_file_prio}-papertrail.conf",
   }
 
   file { $config_file:
