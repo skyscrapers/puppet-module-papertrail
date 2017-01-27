@@ -19,7 +19,12 @@ class papertrail::install inherits papertrail {
     }
   }
 
-  file { '/etc/rsyslog.d/papertrail.conf':
+  $config_file = $papertrail::config_file_prio ? {
+    undef   => '/etc/rsyslog.d/papertrail.conf',
+    default => "/etc/rsyslog.d/${papertrail::config_file_prio}-papertrail.conf",
+  }
+
+  file { $config_file:
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',
@@ -41,7 +46,7 @@ class papertrail::install inherits papertrail {
     group   => 'root',
     mode    => '0660',
     require => [
-      File['/etc/rsyslog.d/papertrail.conf'],
+      File[$config_file],
       Exec['get_certificates']
     ];
   }
