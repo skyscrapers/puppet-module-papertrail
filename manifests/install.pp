@@ -45,6 +45,7 @@ class papertrail::install inherits papertrail {
     owner   => $rsyslog_user,
     group   => 'root',
     mode    => '0660',
+    notify  => Service['rsyslog'],
     require => [
       File[$config_file],
       Exec['get_certificates']
