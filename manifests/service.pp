@@ -1,4 +1,4 @@
-class papertrail::service {
+class papertrail::service inherits papertrail {
 
   if !defined(Service['rsyslog']) {
     service { 'rsyslog':
