@@ -42,7 +42,7 @@ $ActionQueueTimeoutEnqueue <%= @action_queue_timeout_enqueue %>
 $ActionQueueDiscardSeverity <%= @action_queue_discard_severity %>
 <%- end -%>
 
-*.* @@<%= @host %><% unless @port.empty? %>:<%= @port %><% end %>
+*.* @@<%= @host %><% if @port %>:<%= @port %><% end %>
 
 <% unless @optional_files.empty? %>
 $ModLoad imfile
